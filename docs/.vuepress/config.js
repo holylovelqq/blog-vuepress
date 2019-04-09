@@ -14,12 +14,20 @@ module.exports = {
 			description: 'blog'
 		}
 	},
+	markdown: {
+		lineNumbers: true
+	},
+	serviceWorker: true,
 	themeConfig: {
 		locales: {
+			// 显示github连接
+			repo: 'holylovelqq',
+			docsRepo: 'holylovelqq/vuepress-blog',
+			docsDir: 'docs',
+			editLinks: true,
 			'/': {
-				repo: 'holylovelqq',
-				docsRepo: 'holylovelqq/vuepress-blog',
-				docsDir: 'docs',
+				// 显示最后更新时间
+				lastUpdated: '上次更新',
 				// 多语言下拉菜单的标题
 				selectText: '选择语言',
 				// 该语言在下拉菜单中的标签
@@ -99,20 +107,17 @@ module.exports = {
 		}
 	},
 	head: [
-		// ['link', { rel: 'icon', href: `/logo.png` }],
-		// ['link', { rel: 'manifest', href: '/manifest.json' }],
-		// ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-		// ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-		// ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-		// ['link', { rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png` }],
-		// ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
-		// ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
-		// ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
+		['link', { rel: 'icon', href: `/logo.png` }],
+		['link', { rel: 'manifest', href: '/manifest.json' }],
+		['meta', { name: 'theme-color', content: '#3eaf7c' }],
+		['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+		['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+		['link', { rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png` }],
+		['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+		['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+		['meta', { name: 'msapplication-TileColor', content: '#000000' }],
 		// ['script', { src: '/assets/js/article.js'}]
 	],
-	markdown: {
-		lineNumbers: true
-	},
 	evergreen: true //取消对ie及旧版本浏览器的支持，默认是支持的
 
 }
