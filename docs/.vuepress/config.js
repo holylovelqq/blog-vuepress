@@ -19,12 +19,12 @@ module.exports = {
 	},
 	serviceWorker: true,
 	themeConfig: {
+		// 显示github连接
+		repo: 'holylovelqq',
+		docsRepo: 'holylovelqq/vuepress-blog',
+		docsDir: 'docs',
+		editLinks: true,
 		locales: {
-			// 显示github连接
-			repo: 'holylovelqq',
-			docsRepo: 'holylovelqq/vuepress-blog',
-			docsDir: 'docs',
-			editLinks: true,
 			'/': {
 				// 显示最后更新时间
 				lastUpdated: '上次更新',
@@ -33,7 +33,7 @@ module.exports = {
 				// 该语言在下拉菜单中的标签
 				label: '简体中文',
 				// 编辑链接文字
-				editLinkText: '在 GitHub 上编辑此页',
+				editLinkText: '帮我改进此页',
 				// Service Worker 的配置
 				serviceWorker: {
 					updatePopup: {
@@ -48,39 +48,37 @@ module.exports = {
 						link: '/vue/'
 					},
 					{
-						text: 'javascript',
-						link: '/javascript/'
+						text: '前端知识',
+						link: '/frondend/'
 					},
 					{
 						text: '服务器部署',
 						link: '/server/'
 					},
-					{
-						text: 'markdown语法',
-						link: '/markdown/'
-					}
+					// {
+					// 	text: 'markdown语法',
+					// 	link: '/markdown/'
+					// }
 				],
 				sidebar: {
 					'/vue/': [
-						'',
 						'VueCommon',
 						'VueUnitTest'
 					],
-					'/javascript/': [
-						'',
-						'javascript1',
-						'javascript2'
+					'/frondend/': [
+						'JS',
+						'CSS'
 					],
 					'/server/': [
 						'',
 						'server1',
 						'server2'
 					],
-					'/markdown/': [
-						'',
-						'markdown1',
-						'markdown2'
-					],
+					// '/markdown/': [
+					// 	'',
+					// 	'markdown1',
+					// 	'markdown2'
+					// ],
 					'/': [ /* ... */ ]
 				}
 			},
