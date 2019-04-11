@@ -55,10 +55,10 @@ module.exports = {
 						text: '服务器部署',
 						link: '/server/'
 					},
-					// {
-					// 	text: 'markdown语法',
-					// 	link: '/markdown/'
-					// }
+					{
+						text: '无关技术',
+						link: '/life/'
+					}
 				],
 				sidebar: {
 					'/vue/': [
@@ -68,18 +68,18 @@ module.exports = {
 					'/frondend/': [
 						'JS',
 						'CSS',
-						'codingRules'
+						'codingRules',
+						'usefullWeb'
 					],
 					'/server/': [
 						'',
 						'server1',
 						'server2'
 					],
-					// '/markdown/': [
-					// 	'',
-					// 	'markdown1',
-					// 	'markdown2'
-					// ],
+					'/life/': [
+						'',
+						'noSay'
+					],
 					'/': [ /* ... */ ]
 				}
 			},
