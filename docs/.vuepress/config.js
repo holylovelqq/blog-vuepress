@@ -72,12 +72,10 @@ module.exports = {
 						'usefullWeb'
 					],
 					'/server/': [
-						'',
-						'server1',
-						'server2'
+						'AWS',
+						'ALIBABA'
 					],
 					'/life/': [
-						'',
 						'noSay'
 					],
 					'/': [ /* ... */ ]
