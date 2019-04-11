@@ -67,7 +67,8 @@ module.exports = {
 					],
 					'/frondend/': [
 						'JS',
-						'CSS'
+						'CSS',
+						'codingRules'
 					],
 					'/server/': [
 						'',
