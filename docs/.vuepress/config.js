@@ -69,6 +69,7 @@ module.exports = {
 						'JS',
 						'CSS',
 						'codingRules',
+						'summary',
 						'usefullWeb'
 					],
 					'/server/': [
