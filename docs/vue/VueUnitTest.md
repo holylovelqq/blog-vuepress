@@ -1,10 +1,20 @@
 # VUE-UnitTest
 
-本文将大致介绍vue单元测试的写法，详细请参考github代码[仓库](https://github.com/holylovelqq/vue-unit-test-with-jest)
++ 本文将大致介绍vue单元测试的写法，详细请参考github代码[仓库](https://github.com/holylovelqq/vue-unit-test-with-jest)
++ 单元测试写法参考[Vue Test Utils](https://vue-test-utils.vuejs.org/zh/),这是vue官方的单元测试实用工具库
++ 使用的是[jest](https://jestjs.io/docs/zh-Hans/getting-started),Facebook 开发的测试运行器
++ 本文的想定读者：使用vue作为项目的开发框架，对vue有一定的理解，要写单元测试
++ 开发环境，需要特别指出
+  + Vue-Cli：v3.3.0
+  + "vue": "^2.6.6"
 
-单元测试写法参考[Vue Test Utils](https://vue-test-utils.vuejs.org/zh/),这是vue官方的单元测试实用工具库
+其他，请参见package.json文件
 
-使用的是[jest](https://jestjs.io/docs/zh-Hans/getting-started),Facebook 开发的测试运行器
++ 特别说明
+  + **免责声明**
+  本文所述内容是否适用于您的项目，判断权在您，使用与否的决定权也在您自己，故因使用本文中知识所造成的一切损失，均由使用者自己负责，笔者概不负责
+  + **版权声明**
+  未经笔者同意不得用于商业用途，违者必究。个人引用请标明出处
 
 ## 为什么要写单元测试
 
@@ -77,6 +87,66 @@
 + .not.+matcher，eg. .not.toBe()----前面加上.not就是否定形式，
 
 以上只是一部分matcher，更多请查看[jest官方文档](https://jestjs.io/docs/zh-Hans/expect#expectextendmatchers)
+
+## 项目结构
+
+一目了然的文件树结构，能给人一种逻辑清晰的第一印象，体现了开发者的基本素养
+
+下面是作者的文件分类方式
+
+### 组件分类
+
+组件分类不仅有利于测试，更重要的是性能优化，组件尽可能分类细化有利于快速更新视图、渲染页面、提高用户体验
+
+前端组件分类一般分为两类
+
++ Presentation Component
++ Container Component
+
+#### Presentation Component
+
+这类组件的主要功能是DOM展示，数据一般是通过props获取数据，然后展示出来
+
+基本特征：
+
++ 不依赖其他组件，与store和router无关联
++ 不进行CRUD操作（如果必要可使用$emit在夫组件内操作）
++ 尽量不使用生命周期函数
++ 尽量具有可复用性
+
+#### Container Component
+
+这类组件的主要功能是数据操作（API联调）
+
+基本特征：
+
++ 子组件的状态改变（props、$emit）
++ CRUD操作、store内数据操作、router切换
+
+### 文件树构成
+
+基于组件分类方式，把不同的组件放在不同的文件夹内
+
+```text
+-src
+  -assets------CSS，JS，image，icon
+  -basics------基础组件（不含其他组件，便于复用）
+  -components--大型组件（含其他组件，会被复用）
+  -containers--容器组件（包含其他组件，不会被复用，数据处理，通常用于复杂页面分担views压力）
+  -views--------页面组件（路由切换使用，展示页面用，数据处理）
+    -App.vue
+  -main.js
+...其他
+```
+
+下面相应讲解一下每个文件夹内对应的组件类别
+
++ Bsics文件夹内存放的一般是最小的组件单元和可复用的组件，比如：按钮组件AppButton.vue、输入框组件AppInput.vue 等等，属于presentation component
++ Components文件夹内存放的是集合了basics或者components组件的父组件，属于presentation component
++ Containers文件夹内存放的是比自身组件小的组件basics或者components组件的父组件，主要是给子组件传递props等数据，属于containers component
++ views文件夹内存放的是页面组件，内涵页面内所有子组件，主要是操作数据和路由切换，属于containers component
+
+※ ***实际请根据项目的需求构建自己的文件树***
 
 ## 单元测试的写法
 
