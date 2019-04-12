@@ -3,7 +3,7 @@ sidebarDepth: 1
 ---
 # VUE踩坑总结
 
-本章记录在实际使用vue的过程中踩过的坑，以及解决办法
+本章记录在实际使用vue的过程中踩过的坑，以及解决办法，欢迎补充添加，请提[issue](https://github.com/holylovelqq/vuepress-blog/issues)
 
 ## VUE项目部署后的路径
 
