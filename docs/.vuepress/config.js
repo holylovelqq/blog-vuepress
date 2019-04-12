@@ -5,7 +5,7 @@ module.exports = {
 		// 作为特例，默认语言可以使用 '/' 作为其路径。
 		'/': {
 			lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
-			title: 'L-holy',
+			title: '瓜田李下',
 			description: '个人博客'
 		}
 		// '/en/': {

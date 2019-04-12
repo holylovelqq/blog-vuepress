@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /baby.jpg
-heroText: L-holy的博客
+heroText: 瓜田李下的博客
 tagline: 技术分享为主的个人博客
 actionText: 进入
 actionLink: /vue/
