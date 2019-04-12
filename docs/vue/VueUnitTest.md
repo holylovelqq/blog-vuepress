@@ -1,10 +1,10 @@
 # VUE-UnitTest
 
-本文将大致介绍vue单元测试的写法，详细请参考代码[仓库](https://github.com/holylovelqq/vue-unit-test-with-jest)
+本文将大致介绍vue单元测试的写法，详细请参考github代码[仓库](https://github.com/holylovelqq/vue-unit-test-with-jest)
 
 单元测试写法参考[Vue Test Utils](https://vue-test-utils.vuejs.org/zh/),这是vue官方的单元测试实用工具库
 
-以及[jest](https://jestjs.io/docs/zh-Hans/getting-started),Facebook 开发的测试运行器
+使用的是[jest](https://jestjs.io/docs/zh-Hans/getting-started),Facebook 开发的测试运行器
 
 ## 为什么要写单元测试
 
@@ -15,7 +15,15 @@
 3. 减少研发新特性时产生的 bug
 4. 改进设计
 5. 促进重构
+
 自动化测试使得大团队中的开发者可以维护复杂的基础代码。
+
+以上是官方说法，就个人而言，除了以上的好处以外，单元测试还能够
+
++ 规范代码
++ 个人成就感，100%测试覆盖率（装b利器）
++ 全周期工程师必备技能（设计-编程-测试-release-部署-维护）
++ 如果项目不是给公司做的，而是个人项目，测试是不可或缺的（你难道不想有一个自己的项目么）
 
 ## 本文提到的单元测试
 
@@ -33,7 +41,7 @@
 
 ### Script标签
 
-本标签内主要是逻辑实现可能出现的内容有
+本标签内主要是逻辑实现，可能出现的内容有
 
 + Props（⭐必须进行测试）
 + Data（一般配合v-bind/v-if/v-show等一起测试）
@@ -51,37 +59,39 @@
 
 ## 常用的断言语句
 
-+ toBe()测试具体的值
-+ toEqual()测试对象类型的值
-+ toBeCalled()测试函数被调用
-+ toHaveBeenCalledTimes()测试函数被调用的次数
-+ toHaveBeenCalledWith()测试函数被调用时的参数
-+ toBeNull()结果是null
-+ toBeUndefined()结果是undefined
-+ toBeDefined()结果是defined
-+ toBeTruthy()结果是true
-+ toBeFalsy()结果是false
-+ toContain()数组匹配，检查是否包含
-+ toMatch()匹配字符型规则，支持正则
-+ toBeCloseTo()浮点数
-+ toThrow()支持字符串，浮点数，变量
-+ toMatchSnapshot()  jest特有的快照测试
-+ .not.+matcher，eg. .not.toBe()  前面加上.not就是否定形式，
++ toBe()----测试具体的值
++ toEqual()----测试对象类型的值
++ toBeCalled()----测试函数被调用
++ toHaveBeenCalledTimes()----测试函数被调用的次数
++ toHaveBeenCalledWith()----测试函数被调用时的参数
++ toBeNull()----结果是null
++ toBeUndefined()----结果是undefined
++ toBeDefined()----结果是defined
++ toBeTruthy()----结果是true
++ toBeFalsy()----结果是false
++ toContain()----数组匹配，检查是否包含
++ toMatch()----匹配字符型规则，支持正则
++ toBeCloseTo()----浮点数
++ toThrow()----支持字符串，浮点数，变量
++ toMatchSnapshot()----jest特有的快照测试
++ .not.+matcher，eg. .not.toBe()----前面加上.not就是否定形式，
 
 以上只是一部分matcher，更多请查看[jest官方文档](https://jestjs.io/docs/zh-Hans/expect#expectextendmatchers)
 
 ## 单元测试的写法
 
-以下会列举一些单元测试的写法，都是基于[仓库](https://github.com/holylovelqq/vue-unit-test-with-jest)内的代码，请参考.vue源文件一起阅读，不然很难理解哦
+以下会列举一些单元测试的写法，源码来自于github[仓库](https://github.com/holylovelqq/vue-unit-test-with-jest)，.vue文件并未展示，如遇不理解之处请参考源码
 
 ### Snapshot测试
 
-目前来说是jest专有的测试方法，测试整体的html有没有更改
+目前来说是jest专有的测试方法，测试整体的html有没有更改，每一个文件都应该进行该测试。
+
+※ 更改html后，该测试会失败，删除保存在__snapshots__文件夹内对应的.snap文件后，重新测试（或者根据实际情况在测试命令后加 -u）
 
 ```js
 // 测试内容：snapshot->概括的测试DOM结构
 it('matches snapshot', () => {
-  constwrapper = shallowMount(AppButton)
+  const wrapper = shallowMount(AppButton)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.destroy()
 })
@@ -90,12 +100,12 @@ it('matches snapshot', () => {
 
 ### 精确DOM结构测试
 
-断言指定节点对象是否存在
+断言指定节点对象是否存在，视项目情况而定需不需要进行此测试
 
 ```js
 // 测试内容：精准DOM结构测试示例
 it('DOM test', () => {
-  constwrapper = shallowMount(AppButton)
+  const wrapper = shallowMount(AppButton)
   expect(wrapper.contains('button')).toBeTruthy()
   wrapper.destroy()
 })
@@ -104,22 +114,24 @@ it('DOM test', () => {
 
 ### v-on
 
-以click事件为例，测试思路：点击，断言对应函数是否被触发，触发几次，参数是否为预期参数（如果有参数）
++ 以click事件为例
++ 测试思路：点击，断言对应函数是否被触发，触发几次，参数是否为预期参数（如果有参数）
++ 注意被断言的函数必须为mock函数，不然会报错
 
 ```js
 /** 测试内容：func测试
   *点击按钮组件时，正确触发点击事件
 */
 it('click button onClick is clled', () => {
-  constwrapper = shallowMount(AppButton)
+  const wrapper = shallowMount(AppButton)
   // 创建mock函数
-  constmockFn = jest.fn()
+  const mockFn = jest.fn()
   // 设置 Wrapper vm 的方法并强制更新。
   wrapper.setMethods({
   onClick:mockFn
       })
   // 获取buttonDOM元素
-  constbutton = wrapper.find('button')
+  const button = wrapper.find('button')
   // 测试点击按钮后有没有正确触发函数
   button.trigger('click')
   // 断言函数被触发，且被触发一次
@@ -138,7 +150,7 @@ it('click button onClick is clled', () => {
 ```js
 /**
  * 测试内容：data v-bind
- * 断言data中变量的默认值
+ * 断言data中变量的值
 */
 it('data test', () => {
   // 断言默认值
@@ -153,9 +165,9 @@ it('data test', () => {
 
 ### slot
 
-vue2.6.0以上版本更新了此语法，本文完成时并未影响到测试
++ vue2.6.0以上版本更新了此语法，本文完成时并未影响到测试
 
-slots分为普通插槽和具名插槽和作用域插槽，均需测试
++ slots分为普通插槽、具名插槽和作用域插槽，以下分别示例
 
 ```js
 /**
@@ -163,8 +175,8 @@ slots分为普通插槽和具名插槽和作用域插槽，均需测试
  * 测试默认值（当slot有默认值时）
 */
 it('slots default value test', () => {
-  constwrapper = shallowMount(AppButton)
-  constbutton = wrapper.find('button')
+  const wrapper = shallowMount(AppButton)
+  const button = wrapper.find('button')
   expect(button.text()).toBe('submit')
   wrapper.destroy()
 })
@@ -174,12 +186,12 @@ it('slots default value test', () => {
  * 自定义的内容可能会是text，html，componets等允许的内容
 */
 it('slots test', () => {
-  constwrapper = shallowMount(AppButton, {
+  const wrapper = shallowMount(AppButton, {
     slots: {
     default:'i am slots text'// 自定义slots内容
       }
   })
-  constbutton = wrapper.find('button')
+  const button = wrapper.find('button')
   expect(button.text()).toBe('i am slots text')
 
   wrapper.destroy()
@@ -192,31 +204,32 @@ it('slots test', () => {
  * expect(wrapper.contains('.container')).toBe(true)
 */
 it('named slots test', () => {
-constwrapper = shallowMount(AppButton, {
+const wrapper = shallowMount(AppButton, {
 slots: {
 namedSlot:`<span>i am slots html</span>`// 自定义slots内容
       }
     })
-constbutton = wrapper.find('button')
+const button = wrapper.find('button')
 expect(button.contains('span')).toBe(true)
-constspan = wrapper.find('button span')
+const span = wrapper.find('button span')
 expect(span.text()).toBe('i am slots html')
 
 wrapper.destroy()
   })
 
-/** 测试内容：slots作用域插槽->vue2.6更新后的新语法v-slots，3.0中会延续使用，并废除旧语法
-  * 测试方法与slots具名插槽相同，此处传入为html,
-  * 当传入组件时，只需断言wrapper中是否包含组件的DOM元素即可
-  * expect(wrapper.contains('.container')).toBe(true)
+/** 测试内容：slots作用域插槽
+ * vue2.6更新后的新语法v-slots，3.0中会延续使用，并废除旧语法
+ * 测试方法与slots具名插槽相同，此处传入为html,
+ * 当传入组件时，只需断言wrapper中是否包含组件的DOM元素即可
+ * expect(wrapper.contains('.container')).toBe(true)
 */
 it('scoped slots test', () => {
-constwrapper = shallowMount(AppButton, {
+const wrapper = shallowMount(AppButton, {
 scopedSlots: {
 scopedSlot:`<span slot-scope="foo">{{ foo.user.lastName }}</span>`// 自定义slots内容
       }
     })
-constbutton = wrapper.find('button')
+const button = wrapper.find('button')
 expect(button.contains('span')).toBe(true)
 constspan = wrapper.find('button span')
 expect(span.text()).toBe('holy')
@@ -229,18 +242,16 @@ wrapper.destroy()
 
 ### v-if/v-show
 
-依赖变量存在于script标签内
-
 ```js
 /**
- * 测试内容：v-show 测试，v-if、v-bind的测试思路基本相同
+ * 测试内容：v-show/v-if测试，与v-bind的测试思路基本相同
  * 设置变量的值，断言对应的DOM结构显示与否
 */
 it('v-show test', () => {
   // true时显示的div
-  consttruediv = wrapper.find('.text.format')
+  const truediv = wrapper.find('.text.format')
   // false时显示的div
-  constfalsediv = wrapper.find('.text.noformat')
+  const falsediv = wrapper.find('.text.noformat')
   // toggleShow默认值为true
   expect(truediv.isVisible()).toBe(true)
   expect(falsediv.isVisible()).toBe(false)
@@ -254,7 +265,7 @@ it('v-show test', () => {
 
 ### filter过滤器
 
-过滤器的测试与其他略有不同，直接看代码
++ 过滤器的测试与其他略有不同，参见下方代码
 
 ```js
 import { shallowMount, createLocalVue } from '@vue/test-utils'
@@ -277,17 +288,20 @@ it('filter test', () => {
 
 ### props
 
++ 复杂组件的props也会较复杂，但只要思路清晰，套路都是一样的
+
 ```js
 /** 测试内容：props
  * 自定义props传递给AppButton组件，判断组件有获取到props
+ * 请注意props是否存在默认值
 */
 it('props test', () => {
-  constbuttonProps = {
+  const buttonProps = {
     type:'danger',
     size:'lg',
     disabled:true
   }
-  constwrapper = shallowMount(AppButton, {
+  const wrapper = shallowMount(AppButton, {
     propsData:buttonProps
   })
   // 断言已经获取到props
@@ -301,6 +315,8 @@ it('props test', () => {
 ```
 
 ### Methods（func函数测试）
+
++ 主动触发函数，断言执行结果是否符合预期
 
 ```js
 /** 测试内容：changeShow()函数
@@ -323,15 +339,18 @@ it('called changeShow()', () => {
 
 ### $emit
 
++ 子组件内触发父组件内的函数，组件结构越复杂，使用的越多
++ 区别于eventHub，此$emit非彼$emit
+
 ```js
 /** 测试内容：$emit
  * 包含$emit的函数被触发后，emit的函数也会被触发
 */
 it('when onClick is called $emit is called', () => {
-  constwrapper = shallowMount(AppButton)
+  const wrapper = shallowMount(AppButton)
   // 测试$emmit函数被正确触发
   // mock函数替代点击按钮后$emit的函数，此处函数名相同，依然为click
-  constmockFn1 = jest.fn()
+  const mockFn1 = jest.fn()
   wrapper.vm.$on('click', mockFn1)
   // 测试mock函数是否被触发，触发的次数,以及参数
   wrapper.vm.onClick()
@@ -351,6 +370,7 @@ it('when onClick is called $emit is called', () => {
 
 ### watch
 
++ 下例内，侦听器内仅执行了console.log()
 
 ```js
 /** 测试内容：watch
@@ -358,7 +378,7 @@ it('when onClick is called $emit is called', () => {
 */
 it('watch test', () => {
   // mock掉console.log
-  constspy = jest.spyOn(console,'log')
+  const spy = jest.spyOn(console,'log')
   // 手动将变量的值设置为false,默认值是true
   wrapper.vm.toggleShow = '自定义'
   // 断言函数是否执行
@@ -381,7 +401,7 @@ it('watch test', () => {
  * 改变props的type，size，disable值时，cssClasses的值也会跟着改变
 */
 it('computed test', () => {
-  constwrapper = shallowMount(AppButton)
+  const wrapper = shallowMount(AppButton)
   // 设置props 断言computed计算属性（注意props有default值）
   wrapper.setProps({ type:'danger' })
   expect(wrapper.vm.cssClasses).toBe('app-button app-button--md app-button--danger')
@@ -397,6 +417,8 @@ it('computed test', () => {
 
 ### router
 
++ 本文建议使用mock的$route和$router
+
 ```js
 import { shallowMount } from '@vue/test-utils'
 import RouterTest from '@/components/RouterTest.vue'
@@ -405,19 +427,17 @@ import RouterTest from '@/components/RouterTest.vue'
  * 不建议直接在localVue上挂载vue-router
  * 使用mock的$route和$router更加灵活，方便测试
 */
-const$route = {
-path:'/some'
-// ...其他属性
+const $route = {
+  path:'/some'
+  // ...其他属性
 }
-constmockPush = jest.fn()
-const$router = {
-push:mockPush
-// ... 其他属性
+const mockPush = jest.fn()
+const $router = {
+  push:mockPush
+  // ... 其他属性
 }
 
 describe('RouterTest.vue', () => {
-  // A Wrapper is an object that contains a mounted component or vnode and methods to test the component or vnode
-  // wrapper是一个对象，包含了已经mounted的组件或vnode，及测试该组件或 vnode 的方法。
   // wrapper.vm是组件实例，包含该实例的所有方法和属性
   letwrapper
   beforeEach(() => {
@@ -447,6 +467,10 @@ describe('RouterTest.vue', () => {
 
 ### axios
 
+1. mock掉整个axios，返回值可以在此时定义也可以在使用时定义
+2. .vue文件内使用axios函数内需要配合添加return，便于测试
+3. reject的情况也需要测试
+
 ```js
 /**
  * AxiosTest.vue组件
@@ -463,11 +487,11 @@ import axios from 'axios'
 jest.mock('axios')
 
 // 创建临时Vue实例，挂载组件中使用的插件
-constlocalVue = createLocalVue()
+const localVue = createLocalVue()
 localVue.prototype.$axios = axios// 挂载axios
 
 describe('AxiosTest.vue', () => {
-  letwrapper
+  let wrapper
   beforeEach(() => {
   axios.mockClear()
   wrapper = shallowMount(AxiosTest, { localVue,
@@ -480,14 +504,15 @@ describe('AxiosTest.vue', () => {
   })
 
   // 测试内容：func ->getData()
-  // 点击按钮函数被触发(注意此处的click事件是子组件(按钮组件$emit)的事件,在父组件内不属于DOM原生事件,所以触发方式不能使用trigger,而应该使用$emit)
+  // 点击按钮函数被触发(注意此处的click事件是子组件(按钮组件$emit)的事件,
+  // 在父组件内不属于DOM原生事件,所以触发方式不能使用trigger,而应该使用$emit)
   it('when button is clicked getData will be called', () => {
     // 创建mock函数
-    constmockFn = jest.fn()
+    const mockFn = jest.fn()
     // 设置 Wrapper vm 的方法并强制更新。
     wrapper.setMethods({ getData:mockFn })
     // 获取对应按钮
-    constaxiosButton = wrapper.find('.axios app-button-stub')
+    const axiosButton = wrapper.find('.axios app-button-stub')
     // 点击按钮->注意触发方式不能使用trigger
     axiosButton.vm.$emit('click')
     // 断言函数被触发且只触发一次
@@ -500,11 +525,11 @@ describe('AxiosTest.vue', () => {
   it('axios test', () => {
     // 此处只是使用了get,post/patch/delete/...与get相同
     // 自定义get的返回值
-    constmockData = { data: { name:'Bob' } }
+    const mockData = { data: { name:'Bob' } }
     axios.get.mockResolvedValue(mockData)
-    returnwrapper.vm.getData().then(result=> {
-    expect(result).toEqual(mockData)
-    expect(wrapper.vm.usersInfo).toEqual(mockData.data)
+    return wrapper.vm.getData().then(result=> {
+      expect(result).toEqual(mockData)
+      expect(wrapper.vm.usersInfo).toEqual(mockData.data)
     })
   })
 
@@ -512,19 +537,16 @@ describe('AxiosTest.vue', () => {
   it('axios test', () => {
     // 自定义get被拒绝时返回值
     axios.get.mockRejectedValue('error')
-    returnwrapper.vm.getData().catch(e=>expect(e).toMatch('error'))
-  })
-
-  // 测试内容：snapshot->概括的测试DOM结构
-  // 如果组件内存在比较特殊的需要测试的DOM结构的话，可以单独测试（详见AppButton测试文件）
-  it('snapshot test', () => {
-    expect(wrapper.html()).toMatchSnapshot()
+    return wrapper.vm.getData().catch(e=>expect(e).toMatch('error'))
   })
 })
 
 ```
 
 ### vuex
+
++ 伪造vuex内的所有
++ 测试伪造的函数能否被正确触发
 
 ```js
 /**
@@ -534,24 +556,22 @@ describe('AxiosTest.vue', () => {
  * func
  * vuex store内的state mutations actions getters
  */
-import { shallowMount, createLocalVue } from'@vue/test-utils'
-importVuexTestfrom'@/components/VuexTest.vue'
-importVuexfrom'vuex'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import VuexTest from '@/components/VuexTest.vue'
+import Vuex from 'vuex'
 
 // 创建临时Vue实例，挂载组件中使用的插件
-constlocalVue = createLocalVue()
+const localVue = createLocalVue()
 localVue.use(Vuex)
 
 describe('VuexTest.vue', () => {
-  // A Wrapper is an object that contains a mounted component or vnode and methods to test the component or vnode
-  // wrapper是一个对象，包含了已经mounted的组件或vnode，及测试该组件或 vnode 的方法。
   // wrapper.vm是组件实例，包含该实例的所有方法和属性
-  letwrapper
-  letactions
-  letstate
-  letgetters
-  letmutations
-  letstore
+  let wrapper
+  let actions
+  let state
+  let getters
+  let mutations
+  let store
   beforeEach(() => {
     // 伪造actions state getters mutations
     actions = {
@@ -590,15 +610,15 @@ describe('VuexTest.vue', () => {
   // 测试内容：state
   // 只需测试伪造的state值是否存在于dom中
   it('getters test', () => {
-    consttext = wrapper.find('.text')
+    const text = wrapper.find('.text')
     expect(text.text()).toContain(state.count)
   })
 
   // 测试内容：actions-通过点击按钮直接调用
   // 点击按钮测试伪造的函数是否被调用
   it('actions test', () => {
-    constbuttonAdd = wrapper.find('.add')
-    constbuttonMinus = wrapper.find('.minus')
+    const buttonAdd = wrapper.find('.add')
+    const buttonMinus = wrapper.find('.minus')
     buttonAdd.vm.$emit('click')
     expect(actions.increment).toHaveBeenCalled()
     expect(actions.increment).toHaveBeenCalledTimes(1)
@@ -610,8 +630,8 @@ describe('VuexTest.vue', () => {
   // 测试内容：dispatchIncrement()
   // 点击按钮测试函数dispatchIncrement()是否被调用
   it('dispatchIncrement test', () => {
-    constdispatchAdd = wrapper.find('.dispatchAdd')
-    constmockAdd = jest.fn()
+    const dispatchAdd = wrapper.find('.dispatchAdd')
+    const mockAdd = jest.fn()
     wrapper.setMethods({
       dispatchIncrement:mockAdd
     })
@@ -631,8 +651,8 @@ describe('VuexTest.vue', () => {
   // 测试内容：mutationsDecrement()
   // 点击按钮测试函数mutationsDecrement()是否被调用
   it('mutationsDecrement test', () => {
-    constmutationsMinus = wrapper.find('.mutationsMinus')
-    constmockMinus = jest.fn()
+    const mutationsMinus = wrapper.find('.mutationsMinus')
+    const mockMinus = jest.fn()
     wrapper.setMethods({
       mutationsDecrement:mockMinus
     })
@@ -652,20 +672,18 @@ describe('VuexTest.vue', () => {
   // 测试内容：getters
   // 只需测试伪造的getters值是否存在于dom中
   it('getters test', () => {
-    consttext = wrapper.find('.text')
+    const text = wrapper.find('.text')
     expect(text.text()).toContain(getters.evenOrOdd())
-  })
-
-  // 测试内容：snapshot->概括的测试DOM结构
-  // 如果组件内存在比较特殊的需要测试的DOM结构的话，可以单独测试（详见AppButton测试文件末尾）
-  it('snapshot test', () => {
-    expect(wrapper.html()).toMatchSnapshot()
   })
 })
 
 ```
 
 ### store.js
+
++ 测试vuex内的各个函数
++ 当测试其中任一函数时，其他依赖全部使用mock函数
++ 该测试方法为官方推荐方法之一，官方推荐了两种测试方法，各有优劣，详情参阅[官方说明](https://vue-test-utils.vuejs.org/zh/guides/#%E5%9C%A8%E7%BB%84%E4%BB%B6%E4%B8%AD%E6%B5%8B%E8%AF%95-vuex)
 
 ```js
 /**
@@ -674,13 +692,13 @@ describe('VuexTest.vue', () => {
  * 测试思路：mutations/getters/actions 分别测试，测试其中一个的时候，其他依赖伪造mock
 * 本质还是测试方法（官网列出了两种测试方法，我们选择简单易懂便于测试的）
 */
-import { mutations, getters, actions } from'@/store.js'
+import { mutations, getters, actions } from '@/store.js'
 
 describe('store.js', () => {
   // 测试内容：mutations
   // 伪造（mock）state 测试mutations下的方法
   it('mutations test', () => {
-    conststate = {
+    const state = {
       count:0
     }
     mutations.increment(state)
@@ -692,7 +710,7 @@ describe('store.js', () => {
   // 测试内容：getters
   // 伪造（mock）state 测试evenOrOdd的值
   it('getters test even', () => {
-    conststate = {
+    const state = {
     count:0
         }
     expect(getters.evenOrOdd(state)).toBe('even')
@@ -701,7 +719,7 @@ describe('store.js', () => {
   // 测试内容：getters
   // 伪造（mock）state 测试evenOrOdd的值
   it('getters test odd', () => {
-    conststate = {
+    const state = {
     count:1
         }
     expect(getters.evenOrOdd(state)).toBe('odd')
@@ -711,7 +729,7 @@ describe('store.js', () => {
   // 伪造（mock）commit 测试mutations下的方法
   it('actions test', () => {
     // 伪造commit
-    constcommit = jest.fn()
+    const commit = jest.fn()
     // increment
     actions.increment({ commit })
     expect(commit).toBeCalled()
