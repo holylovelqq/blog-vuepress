@@ -7,12 +7,12 @@ module.exports = {
 			lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
 			title: 'L-holy',
 			description: '个人博客'
-		},
-		'/en/': {
-			lang: 'en-US',
-			title: 'L-holy',
-			description: 'blog'
 		}
+		// '/en/': {
+		// 	lang: 'en-US',
+		// 	title: 'L-holy',
+		// 	description: 'blog'
+		// }
 	},
 	markdown: {
 		lineNumbers: true
@@ -82,26 +82,26 @@ module.exports = {
 					'/': [ /* ... */ ]
 				}
 			},
-			'/en/': {
-				selectText: 'Languages',
-				label: 'English',
-				editLinkText: 'Edit this page on GitHub',
-				serviceWorker: {
-					updatePopup: {
-						message: "New content is available.",
-						buttonText: "Refresh"
-					}
-				},
-				algolia: {},
-				nav: [{
-					text: 'Nested',
-					link: '/en/nested/'
-				}],
-				sidebar: {
-					'/en/': [ /* ... */ ],
-					'/en/nested/': [ /* ... */ ]
-				}
-			}
+			// '/en/': {
+			// 	selectText: 'Languages',
+			// 	label: 'English',
+			// 	editLinkText: 'Edit this page on GitHub',
+			// 	serviceWorker: {
+			// 		updatePopup: {
+			// 			message: "New content is available.",
+			// 			buttonText: "Refresh"
+			// 		}
+			// 	},
+			// 	algolia: {},
+			// 	nav: [{
+			// 		text: 'Nested',
+			// 		link: '/en/nested/'
+			// 	}],
+			// 	sidebar: {
+			// 		'/en/': [ /* ... */ ],
+			// 		'/en/nested/': [ /* ... */ ]
+			// 	}
+			// }
 		}
 	},
 	head: [
