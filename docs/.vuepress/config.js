@@ -76,7 +76,7 @@ module.exports = {
 						'AWS',
 						'ALIBABA',
 						'nginx',
-						'jikens'
+						'jenkins'
 					],
 					'/life/': [
 						'noSay'
