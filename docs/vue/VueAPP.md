@@ -104,7 +104,7 @@ Alternatively, to learn how to transfer the license agreements from one workstat
 综上所述，要想顺利的使用weex 2.0.0版本开发，必须的环境和版本：
 
 + iOS环境依赖XCode，安装后请打开XCode以便完成后续的初始化工作。
-+ Android环境依赖[Android studio](https://www.cnblogs.com/xiadewang/p/7820377.html), [Java JDK](https://www.cnblogs.com/renqiqiang/p/6822143.html) 1.8 (Windows需要设置Java的环境路径，教程), Android SDK Platform 26 (通过Android studio安装，默认会安装最新版，需要我们手动安装：tools-SDK Manager-选择安装), Android SDK Build-Tools 26 (通过Android studio安装,默认一起安装), Android virtual device (通过Android studio安装:tools-AVD Manager-Creat new virtual Device-然后就进入选择设备和下载安装过程过程,请选择APIlevel26，与Platform一直)
++ Android环境依赖[Android studio](https://www.cnblogs.com/xiadewang/p/7820377.html), [Java JDK](https://www.cnblogs.com/renqiqiang/p/6822143.html) 1.8 (Windows需要设置Java的环境路径), Android SDK Platform 26 (通过Android studio安装，默认会安装最新版【版本不同会报错】，需要我们手动安装：tools-SDK Manager-选择安装), Android SDK Build-Tools 26 (通过Android studio安装,默认一起安装), Android virtual device (通过Android studio安装【未安装会报错】:tools-AVD Manager-Creat new virtual Device-然后就进入选择设备和下载安装过程过程,请选择APIlevel26，与Platform一致)
 :::
 
 ### 4. 利用框架将现有项目开发成一个android app
