@@ -63,12 +63,14 @@ module.exports = {
 				sidebar: {
 					'/vue/': [
 						'VueCommon',
-						'VueUnitTest'
+						'VueUnitTest',
+						'VueAPP'
 					],
 					'/frondend/': [
 						'JS',
 						'CSS',
 						'codingRules',
+						'SQL',
 						'summary',
 						'usefullWeb'
 					],
