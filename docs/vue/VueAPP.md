@@ -57,14 +57,13 @@ Set of components for mobile
 
 ### 3. 安装安卓模拟器(非必需)
 
-作者虽然安装了[夜神模拟器](https://www.yeshen.com/)，但是基本没用到，只是用来以防万一
-
+作者虽然安装了[夜神模拟器](https://www.yeshen.com/)，但是基本没用到，只做备用
 
 ### 4. 其他安卓开发环境
 
-+ nodeJS安装（在安装框架之前就应该已经安装了）
++ nodeJS（在安装框架之前就应该已经安装了）
 + [JDK安装、java环境配置](https://www.cnblogs.com/renqiqiang/p/6822143.html)，必须正确安装,建议安装完成后重启电脑
-+ 根据文档安装[NDK r16](https://developer.android.com/ndk/downloads/older_releases.html)和[Cmake 3.9.0+](https://cmake.org/download/?spm=a2c7j.-zh-guide-develop-integrate-to-android-app.0.0.5a841a8ePGctAs)官网有说明，这个是选择性安装，非必需
++ 根据文档选择性安装[NDK r16](https://developer.android.com/ndk/downloads/older_releases.html)和[Cmake 3.9.0+](https://cmake.org/download/?spm=a2c7j.-zh-guide-develop-integrate-to-android-app.0.0.5a841a8ePGctAs)官网有说明，非必需
 
 ::: tip 开发环境踩坑
 运行"weex run android"，可能会报出任何意外的错，以下就是几个：
@@ -101,7 +100,7 @@ Alternatively, to learn how to transfer the license agreements from one workstat
 
 总之，执行"weex run android"以后，请耐心等待，出错就根据错误提示解决问题，不得不说，有时候即使报错了，但是还是已经把apk打包好了，报错不一定影响打包文件。可以直接复制apk文件安装到Android virtual device上看到效果
 
-综上所述，要想顺利的使用weex 2.0.0版本开发，必须的环境和版本：
+综上所述，要想顺利的使用weex 2.0.0版本开发，**必须的环境和版本**：
 
 + iOS环境依赖XCode，安装后请打开XCode以便完成后续的初始化工作。
 + Android环境依赖[Android studio](https://www.cnblogs.com/xiadewang/p/7820377.html), [Java JDK](https://www.cnblogs.com/renqiqiang/p/6822143.html) 1.8 (Windows需要设置Java的环境路径), Android SDK Platform 26 (通过Android studio安装，默认会安装最新版【版本不同会报错】，需要我们手动安装：tools-SDK Manager-选择安装), Android SDK Build-Tools 26 (通过Android studio安装,默认一起安装), Android virtual device (通过Android studio安装【未安装会报错】:tools-AVD Manager-Creat new virtual Device-然后就进入选择设备和下载安装过程过程,请选择APIlevel26，与Platform一致)
@@ -109,10 +108,14 @@ Alternatively, to learn how to transfer the license agreements from one workstat
 
 ### 4. 利用框架将现有项目开发成一个android app
 
-这一点主要是weex语法的学习，以及与vue语法的不同点的学习
+这一点主要是weex语法的学习，以及与vue语法的不同点的学习，参考文档[在 Weex 中使用 Vue.js](https://weex.apache.org/zh/guide/use-vue-in-weex.html#%E5%9C%A8-weex-%E4%B8%AD%E4%BD%BF%E7%94%A8-vue-js)
+
+因为只是做了一个简单的app，所以并没有异常。以后的实际使用中如果发现异常，在此添加
 
 ### 5. 装在自己手机上试用
 
-看看效果
+虚拟机上试用+夜神模拟器上试用+手机上试用
 
 ### 6. bug调试
+
+有任何bug的话随时修复
