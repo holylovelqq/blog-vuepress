@@ -104,7 +104,22 @@ Alternatively, to learn how to transfer the license agreements from one workstat
 
 + iOS环境依赖XCode，安装后请打开XCode以便完成后续的初始化工作。
 + Android环境依赖[Android studio](https://www.cnblogs.com/xiadewang/p/7820377.html), [Java JDK](https://www.cnblogs.com/renqiqiang/p/6822143.html) 1.8 (Windows需要设置Java的环境路径), Android SDK Platform 26 (通过Android studio安装，默认会安装最新版【版本不同会报错】，需要我们手动安装：tools-SDK Manager-选择安装), Android SDK Build-Tools 26 (通过Android studio安装,默认一起安装), Android virtual device (通过Android studio安装【未安装会报错】:tools-AVD Manager-Creat new virtual Device-然后就进入选择设备和下载安装过程过程,请选择APIlevel26，与Platform一致)
+
+就个人的环境而言，到现在还是报错如下
+
+```text
+Error: Command failed: C:\Users\holy\AppData\Local\Android\Sdk\platform-tools\adb -s emulator-5554 install -r D:\Program Files\WEEX\app\platforms\android\app\build\outputs\apk\weex-app.apk
+adb: failed to stat Files\WEEX\app\platforms\android\app\build\outputs\apk\weex-app.apk: No such file or directory
+
+    at ChildProcess.exithandler (child_process.js:289:12)
+    at ChildProcess.emit (events.js:182:13)
+    at maybeClose (internal/child_process.js:962:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:251:5)
+```
+
+错误信息中的weex-app.apk实际是存在的，具体为什么网上也没有很好的解释。不过将weex-app.apk安装到虚拟机上是可以执行的。个人也不明白报错的具体原因，留待以后研究或者大神指点
 :::
+参考[WEEX开发环境爬坑之旅](https://mobilesite.github.io/2017/12/17/weex-enviroment/)
 
 ### 4. 利用框架将现有项目开发成一个android app
 
