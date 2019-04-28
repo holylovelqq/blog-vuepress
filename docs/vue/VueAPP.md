@@ -34,7 +34,7 @@ Set of components for mobile
 
 以上几种是[vue资源](https://github.com/vuejs/awesome-vue#mobile)推荐的app开发框架和库，每个都有大量的使用者，根据个人具体情况，笔者选择以下
 
-+ 框架使用[weex](https://weex.incubator.apache.org/zh/guide/introduction.html),[weex-eros](https://bmfe.github.io/eros-docs/#/zh-cn/)也是不错选择
++ 框架使用[weex](https://weex.incubator.apache.org/zh/guide/introduction.html),[weex-eros](https://bmfe.github.io/eros-docs/#/zh-cn/)和[uni-app](https://uniapp.dcloud.io/README)也是不错选择，目前国内开发环境而言，使用uni-app进行开发的项目较多，因为其内置weex引擎，有专门的开发editor：HBuilder，支持H5+语法，唯一缺点就是只有中文文档，如果在国内开发的话还是建议使用的
 + 库的话，暂定阿里出品的[weex-ui](https://alibaba.github.io/weex-ui/#/cn/weex-ui-report),[bui-weex](http://dev.bingocc.com/buiweex/docs/)和[mint-ui](http://mint-ui.github.io/docs/#/zh-cn2)也是不错的选择，不过个人觉得前两个都是在weex基础上开发的ui库，更适用于原生应用，mint-ui更偏向于手机web端页面开发使用
 
 ### 2. 学习框架的使用
