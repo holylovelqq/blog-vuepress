@@ -1,5 +1,16 @@
 # VUE原生APP制作
 
+::: tip
+2019 世界移动通信大会 (MWC 大会) 于 2 月 27 日在巴塞罗那顺利拉开帷幕。值此移动盛会，Flutter 团队宣布正式推出 Flutter 1.2,这是flutter更新的首个稳定版本。
+
+Flutter 是 Google 用以帮助开发者在 iOS 和 Android 两个平台开发高质量原生 UI 的移动 SDK。Flutter 兼容现有的代码，免费并且开源，在全球开发者中广泛被使用
+
+有句话叫google出品必属精品，可以预测未来的移动端开发框架的天下必然是属于flutter的,什么react-native、weex、uni-app都将逐渐退出历史舞台。所以如果你的业务涉及到移动端app开发，那么就从今天起学习flutter吧！
+
+由于作者暂时尚未涉及到这一块业务，所以Flutter的学习留待以后，本章内容暂时保留
+
+附[Flutter中文网](https://flutter-io.cn/)[Flutter英文官网](https://flutter.dev/)，网上已经存在很多Flutter相关的教程，有兴趣的可以自己搜索查看
+:::
 ⭐以下使用到的框架/库/插件等，license均为MIT⭐
 
 ⭐实际操作以安卓为例，但是每一步都会介绍IOS对应的操作⭐
