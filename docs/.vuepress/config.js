@@ -64,7 +64,8 @@ module.exports = {
 					'/vue/': [
 						'VueCommon',
 						'VueUnitTest',
-						'VueAPP'
+						'VueAPP',
+						'VueNuxtTS'
 					],
 					'/frondend/': [
 						'JS',
