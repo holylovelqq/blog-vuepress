@@ -95,7 +95,7 @@ $ tree -L 1
 ├── modules/       # 自定义依赖模块，存放项目启动时想要执行的依赖（函数）
 ├── node_modules/
 ├── pages/         # 页面组件，会自动生成路由配置的页面组件
-├── plugins/       # 后期手动添加文件夹，非默认生成。自定义插件文件，主要用于向客户端和服务器端注入插件，参考[注入 $root 和 context](https://zh.nuxtjs.org/guide/plugins/#%E6%B3%A8%E5%85%A5-root-%E5%92%8C-context)，本文仓库代码中用于全局过滤器的定义
+├── plugins/       # 后期手动添加文件夹，非默认生成。
 ├── static/        # 静态文件
 ├── store/         # Vuex相关文件
 ├── README.md
@@ -106,7 +106,7 @@ $ tree -L 1
 └── yarn.lock
 ```
 
->按照步骤此时生成的文件树内应该不存在`plugins`文件夹，这是后期自己添加的，因为在后面介绍全局过滤器的写法时会提到，所以此处也一并介绍。
+>按照步骤此时生成的文件树内应该不存在`plugins`文件夹，这是后期自己添加的，主要用于向客户端和服务器端注入插件，参考[注入 $root 和 context](https://zh.nuxtjs.org/guide/plugins/#%E6%B3%A8%E5%85%A5-root-%E5%92%8C-context)，本文仓库代码中用于全局过滤器的定义，因为在后面介绍全局过滤器的写法时会提到，所以此处也一并介绍。
 
 本文涉及到的有、`components` 和 `pages`以及`plugins`。其他文件夹的详细信息请参考[Nuxt-目录结构](https://zh.nuxtjs.org/guide/directory-structure)
 
@@ -149,7 +149,7 @@ export default class Hello extends Vue {
 
 #### plugins
 
-`plugins`文件夹是后期按需添加的文件夹，用来存放自定义插件或者安装的插件，这些插件一般都是要挂载在Vue实例上或者服务器端实例上，所以这下面的文件会在vue实例化之前运行。参考[Vue-插件](https://zh.nuxtjs.org/guide/plugins/)
+`plugins`文件夹是后期按需添加的文件夹，用来存放自定义插件或者安装的插件，这些插件一般都是要挂载在Vue实例上或者服务器端实例上，所以这下面的文件会在vue实例化之前运行。参考[Nuxt-插件](https://zh.nuxtjs.org/guide/plugins/)
 
 ### 浏览既存的typescript代码
 
