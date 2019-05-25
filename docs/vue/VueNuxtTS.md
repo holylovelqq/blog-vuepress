@@ -106,7 +106,7 @@ $ tree -L 1
 └── yarn.lock
 ```
 
->按照步骤此时生成的文件树内应该不存在`plugins`文件夹，这是后期自己添加的，主要用于向客户端和服务器端注入插件，参考[注入 $root 和 context](https://zh.nuxtjs.org/guide/plugins/#%E6%B3%A8%E5%85%A5-root-%E5%92%8C-context)，本文仓库代码中用于全局过滤器的定义，因为在后面介绍全局过滤器的写法时会提到，所以此处也一并介绍。
+>按照步骤此时生成的文件树内应该不存在`plugins`文件夹，这是后期自己添加的，主要用于向客户端和服务器端注入插件，参考[注入 $root 和 context](https://zh.nuxtjs.org/guide/plugins/#%E6%B3%A8%E5%85%A5-root-%E5%92%8C-context)，本文[仓库](https://github.com/holylovelqq/vue-nuxt-ts-sample)代码中用于全局过滤器的定义，因为在后面介绍全局过滤器的写法时会提到，所以此处也一并介绍。
 
 本文涉及到的有、`components` 和 `pages`以及`plugins`。其他文件夹的详细信息请参考[Nuxt-目录结构](https://zh.nuxtjs.org/guide/directory-structure)
 
@@ -398,7 +398,7 @@ export default class Hello extends Vue {
 ### `components`和过滤器
 
 `components` 在 `@Component` decorator中声明。
-※ 组件内过滤器也是在 `@Component` decorator中声明,见代码仓库
+※ 组件内过滤器也是在 `@Component` decorator中声明,见代码[仓库](https://github.com/holylovelqq/vue-nuxt-ts-sample)
 ※ 全局过滤器需要挂载在Vue上，见`plugins/filter.js`，如果是声明在一个单独的文件内的话，需要在使用的地方引入，理论上引入一次，永久生效，所以也可以在类似app.js的组件内引用。代码中是在`layouts/default.vue`中引入。
 
 template
@@ -464,7 +464,7 @@ export default {
 };
 ```
 
-TypeScript（内容比js稍多，自己理解吧，参考代码仓库）
+TypeScript（内容比js稍多，自己理解吧，参考代码[仓库](https://github.com/holylovelqq/vue-nuxt-ts-sample)）
 
 ```ts
 import { Component, Vue, Prop, Watch } from "nuxt-property-decorator";
