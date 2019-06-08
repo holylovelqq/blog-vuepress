@@ -1,16 +1,17 @@
 ---
 home: true
 heroImage: /baby.jpg
-heroText: 瓜田李下的博客
+heroText: 技术创造价值
 tagline: 技术分享为主的个人博客
 actionText: 进入
 actionLink: /vue/
-# features:
-# - title: 简洁至上
-#   details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-# - title: Vue驱动
-#   details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-# - title: 高性能
-#   details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
+features:
+- title: 前端各种坑
+  details: 从基础html+css+js到Vue实战中的各种已经遇到的坑
+- title: 基于Vue的各种开发
+  details: 基于Vue的生态环境，Vue全家桶+Vue SSR实现等，未涉及R，A框架，框架只是开发工具，没必要飞机坦克大炮都会
+- title: 前端新技术
+  details: 科技发展日新月异，掌握最新技术才能不掉队
+footer: 学会拒绝，懂得取舍
 # footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
