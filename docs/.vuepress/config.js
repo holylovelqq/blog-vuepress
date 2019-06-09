@@ -73,7 +73,8 @@ module.exports = {
 						'codingRules',
 						'SQL',
 						'summary',
-						'usefullWeb'
+						'usefullWeb',
+						'VSCodeExtension'
 					],
 					'/server/': [
 						'AWS',
