@@ -24,6 +24,13 @@
 
 以下是记录个人在开发时候使用的环境搭建流程。
 
+::: tip
+
++ 实际开发中建议使用官网的环境搭建方法，能更简单方便快捷的生成项目。
++ ts的写法建议尽可能使用'''export default Vue.extend({...})''' 。因为该写法更类似于js写法。特殊情况下只能使用'''export default Class componet extend Vue({...})'''，比如多个mixin存在时
+
+:::
+
 ### 准备工作
 
 安装vue-cli3。
@@ -179,7 +186,7 @@ export default class Hello extends Vue {
 </style>
 ```
 
-## 学习typescript的特有写法
+## 学习nuxt-property-decorator typescript的特有写法
 
 :::tip
 
