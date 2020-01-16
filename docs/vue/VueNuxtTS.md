@@ -557,3 +557,12 @@ export default class Hello extends Vue {
 + [stylelint](https://stylelint.io/)
 + Unit Test (推荐 [Jest](https://jestjs.io/ja/)，具体写法教学下一篇中会讲到，推荐参考)
 + tsconfig 和 Lint 的设置根据项目需求。
+
+
+
+::: tip
+
+[2020.1.16]追记：现阶段在vue项目中使用ts的写法大致有两种，一种是上面介绍的`vue-class-component` 写法，还有一种是`Vue.extend()`。两种写法个有利弊，参见这个帖子介绍：[vue中引入typescript开发使用vue.extend()和vue.class-component](https://my.oschina.net/mdu/blog/3075314)。
+个人觉得使用`Vue.extend()`更接近原生写法，尤其是在已经完成的项目中导入TS的时候，能大大减少工作量。
+
+:::
