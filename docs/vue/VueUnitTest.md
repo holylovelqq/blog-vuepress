@@ -176,7 +176,7 @@ it('matches snapshot', () => {
 // 测试内容：精准DOM结构测试示例
 it('DOM test', () => {
   const wrapper = shallowMount(AppButton)
-  expect(wrapper.contains('button')).toBeTruthy()
+  expect(wrapper.find('button')).toBeTruthy()
   wrapper.destroy()
 })
 
@@ -271,7 +271,7 @@ it('slots test', () => {
  * vue2.6更新后的新语法v-slots，3.0中会延续使用，并废除旧语法
  * 测试方法与slots普通插槽相同，此处传入为html,
  * 当传入组件时，只需断言wrapper中是否包含组件的DOM元素即可
- * expect(wrapper.contains('.container')).toBe(true)
+ * expect(wrapper.find('.container')).toBe(true)
 */
 it('named slots test', () => {
 const wrapper = shallowMount(AppButton, {
@@ -280,7 +280,7 @@ namedSlot:`<span>i am slots html</span>`// 自定义slots内容
       }
     })
 const button = wrapper.find('button')
-expect(button.contains('span')).toBe(true)
+expect(button.find('span')).toBe(true)
 const span = wrapper.find('button span')
 expect(span.text()).toBe('i am slots html')
 
@@ -291,7 +291,7 @@ wrapper.destroy()
  * vue2.6更新后的新语法v-slots，3.0中会延续使用，并废除旧语法
  * 测试方法与slots具名插槽相同，此处传入为html,
  * 当传入组件时，只需断言wrapper中是否包含组件的DOM元素即可
- * expect(wrapper.contains('.container')).toBe(true)
+ * expect(wrapper.find('.container')).toBe(true)
 */
 it('scoped slots test', () => {
 const wrapper = shallowMount(AppButton, {
@@ -300,7 +300,7 @@ scopedSlot:`<span slot-scope="foo">{{ foo.user.lastName }}</span>`// 自定义sl
       }
     })
 const button = wrapper.find('button')
-expect(button.contains('span')).toBe(true)
+expect(button.find('span')).toBe(true)
 constspan = wrapper.find('button span')
 expect(span.text()).toBe('holy')
 
